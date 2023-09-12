@@ -1,0 +1,15 @@
+/Users/josuejafet/workspace/C#/etapa1/bin/Debug/net7.0/etapa1
+/Users/josuejafet/workspace/C#/etapa1/bin/Debug/net7.0/etapa1.deps.json
+/Users/josuejafet/workspace/C#/etapa1/bin/Debug/net7.0/etapa1.runtimeconfig.json
+/Users/josuejafet/workspace/C#/etapa1/bin/Debug/net7.0/etapa1.dll
+/Users/josuejafet/workspace/C#/etapa1/bin/Debug/net7.0/etapa1.pdb
+/Users/josuejafet/workspace/C#/etapa1/obj/Debug/net7.0/etapa1.csproj.AssemblyReference.cache
+/Users/josuejafet/workspace/C#/etapa1/obj/Debug/net7.0/etapa1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/josuejafet/workspace/C#/etapa1/obj/Debug/net7.0/etapa1.AssemblyInfoInputs.cache
+/Users/josuejafet/workspace/C#/etapa1/obj/Debug/net7.0/etapa1.AssemblyInfo.cs
+/Users/josuejafet/workspace/C#/etapa1/obj/Debug/net7.0/etapa1.csproj.CoreCompileInputs.cache
+/Users/josuejafet/workspace/C#/etapa1/obj/Debug/net7.0/etapa1.dll
+/Users/josuejafet/workspace/C#/etapa1/obj/Debug/net7.0/refint/etapa1.dll
+/Users/josuejafet/workspace/C#/etapa1/obj/Debug/net7.0/etapa1.pdb
+/Users/josuejafet/workspace/C#/etapa1/obj/Debug/net7.0/etapa1.genruntimeconfig.cache
+/Users/josuejafet/workspace/C#/etapa1/obj/Debug/net7.0/ref/etapa1.dll

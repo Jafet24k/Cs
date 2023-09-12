@@ -1,0 +1,44 @@
+LISTAS GENERICAS 
+
+1. Para crear una lista generica podemos usar la siguiente sintax
+    escuela.Cursos = new List<curso>()
+
+    a. Para agregar nuevos elementos a la lista generica usamos 
+        .Add()
+    b. Elimina todos los elementos de la lista generica usamos 
+        .Clear() & ClearAll()
+    c. Para agregar mas elemetos a otra coleccion o Lista generica
+        .AddRange()
+    d. Para eliminar todos los objetos para devolver true
+        .Remove() --> Remueve un item especifico
+        .RemoveAll()
+        .RemoveRange() --> Elimina la cantidad especifica de elementosa partir
+                            de un indice
+
+2. Removiendo y buscando objetos en colecciones
+    a. En el ejemplo PREDICATE:
+        -. Va a estar iterando en la lista generica para buscar un valor y eliminarlo 
+       
+            // PREDICATE
+
+            Predicate<curso> miAlgoritmo = Predicado;
+            escuela.Cursos.RemoveAll(Predicado);
+
+
+
+            // Metodo del predicado
+            static bool Predicado(curso obj)
+            {
+                return obj.Nombre == "802";
+            }
+    b. Delegado 
+        .- // Usamos un DELEGATE para hacer la busqueda y eliminacion del objeto
+            escuela.Cursos.RemoveAll(delegate (curso cur)
+            {
+                return cur.Nombre == "EOX301" && cur.Jornada == tipojornada.Manaña;
+            });
+        
+
+    c. LAMBDA 
+        .- // FUNCION LAMBDA
+            escuela.Cursos.RemoveAll((curso cur) => cur.Nombre == "IO201");
