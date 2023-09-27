@@ -29,9 +29,22 @@ namespace CoreSchool
 
         }
 
+        // Sobrecarga de Metodo:
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelas(
+            out int conteoEvaluaciones,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool TraeCursos = true
+
+            )
+        {
+            return GetObjetoEscuelas(out conteoEvaluaciones, out int dummy, out dummy, out dummy);
+        }
+
         // Lista de Objetos polimorfica
         // Sobrecarga de objetos:
-        public List<ObjetoEscuelaBase> GetObjetoEscuelas(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelas(
             // Parametros de salida: 
             out int conteoEvaluaciones,
             out int conteoAlumnos,
@@ -76,7 +89,7 @@ namespace CoreSchool
                 }
             }
 
-            return ListaObj;
+            return ListaObj.AsReadOnly();
 
         }
 

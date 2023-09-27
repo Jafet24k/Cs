@@ -15,11 +15,7 @@ class Program
         // Usamos dummy para representar un pareametro de salida que no se usa
         int dummy = 0;
         ImprimirCursosEscuela(engine.Escuela);
-        var listaObjetos = engine.GetObjetoEscuelas(out int conteoEvaluaciones,
-            out dummy,
-            out dummy,
-            out dummy
-            );
+        var listaObjetos = engine.GetObjetoEscuelas();
 
 
         Printer.driveLine(20);
