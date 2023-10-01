@@ -15,7 +15,31 @@ class Program
         // Usamos dummy para representar un pareametro de salida que no se usa
         int dummy = 0;
         ImprimirCursosEscuela(engine.Escuela);
-        var listaObjetos = engine.GetObjetoEscuelas();
+
+        #region Diccionario<>
+        // DICCIONARIO<TKey, TValue>
+        Dictionary<int, string> diccionario = new Dictionary<int, string>();
+
+        diccionario.Add(10, "Jafet");
+        diccionario.Add(23, "Loret");
+
+        foreach (var KeyValPair in diccionario)
+        {
+            Console.WriteLine($"Key: {KeyValPair.Key} Valor: {KeyValPair.Value}");
+        }
+
+        Printer.driveTitle("Acceso a Diccionario");
+        diccionario[0] = "Pekerman";
+        Console.WriteLine(diccionario[23]);
+
+        Printer.driveTitle("Otro Diccionario");
+        var dic = new Dictionary<string, string>();
+        dic["luna"] = "Cuerpo celeste que gira alrededor de la tierra";
+        Console.WriteLine(dic["luna"]);
+        dic.Add("luna", "Protagonist de Soy Luna");
+        Console.WriteLine(dic["luna"]);
+        #endregion
+
 
 
         Printer.driveLine(20);
