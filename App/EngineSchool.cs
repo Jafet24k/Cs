@@ -29,6 +29,18 @@ namespace CoreSchool
 
         }
 
+        // Implementacion de diccionario
+        public Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
+        {
+            var diccionario = new Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>>();
+
+            diccionario.Add(LlaveDiccionario.Escuela, new List<ObjetoEscuelaBase>());
+            diccionario.Add(LlaveDiccionario.Curso, Escuela.Cursos);
+            diccionario.Add(LlaveDiccionario.Alumno, Escuela.Cursos);
+
+            return diccionario;
+        }
+
         // Sobrecarga de Metodo:
         public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelas(
             out int conteoEvaluaciones,
