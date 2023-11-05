@@ -3,6 +3,7 @@ using CoreSchool.Entidades;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
+using CoreSchool.Util;
 
 namespace CoreSchool
 {
@@ -28,6 +29,24 @@ namespace CoreSchool
             CargarEvaluaciones();
 
         }
+        // Imprimir diccionario.
+        public void ImprimirDiccionario(Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> dic,
+                    bool imprEval = false)
+        {
+            foreach (var obj in dic)
+            {
+                Printer.driveTitle(obj.Key.ToString());
+                foreach (var val in obj.Value)
+                {
+                    if (imprEval || !(val is Evaluacion))
+                    {
+                        System.Console.WriteLine(val);
+                    }
+                }
+            }
+        }
+
+
 
         // Implementacion de diccionario
         public Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
@@ -36,7 +55,24 @@ namespace CoreSchool
 
             diccionario.Add(LlaveDiccionario.Escuela, new List<ObjetoEscuelaBase>());
             diccionario.Add(LlaveDiccionario.Curso, Escuela.Cursos);
-            diccionario.Add(LlaveDiccionario.Alumno, Escuela.Cursos);
+
+
+            var listatmp = new List<Evaluacion>();
+            var listampas = new List<Asignatura>();
+            var listampa1 = new List<Alumno>();
+            foreach (var cur in Escuela.Cursos)
+            {
+                listampas.AddRange(cur.Asignaturas);
+                listampa1.AddRange(cur.Alumnos);
+                foreach (var alum in cur.Alumnos)
+                {
+                    listatmp.AddRange(alum.Evaluaciones);
+                }
+            }
+
+            diccionario.Add(LlaveDiccionario.Evaluacion, listatmp.Cast<ObjetoEscuelaBase>());
+            diccionario.Add(LlaveDiccionario.Asignatura, listampas.Cast<ObjetoEscuelaBase>());
+            diccionario.Add(LlaveDiccionario.Alumno, listampa1.Cast<ObjetoEscuelaBase>());
 
             return diccionario;
         }

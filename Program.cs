@@ -27,7 +27,9 @@ class Program
             Console.WriteLine($"Key: {KeyValPair.Key} Valor: {KeyValPair.Value}");
         }
 
+        var dictmp = engine.GetDiccionarioObjetos();
 
+        engine.ImprimirDiccionario(dictmp);
 
         Printer.driveTitle("Acceso a Diccionario");
         diccionario[0] = "Pekerman";
