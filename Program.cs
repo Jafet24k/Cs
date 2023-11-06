@@ -6,14 +6,16 @@ using static System.Console;
 
 class Program
 {
-    private static void Main(string[] args)
+    static void Main(string[] args)
     {
+        AppDomain.CurrentDomain.ProcessExit += AcciondelEvento;
+
         var engine = new EngineSchool();
         engine.Inicializar();
         Printer.driveTitle("BIENVENIDOS _ _ _ ");
         // Printer.beep();
         // Usamos dummy para representar un pareametro de salida que no se usa
-        ImprimirCursosEscuela(engine.Escuela);
+        //ImprimirCursosEscuela(engine.Escuela);
 
         //#region Diccionario<>
         // DICCIONARIO<TKey, TValue>
@@ -29,7 +31,7 @@ class Program
 
         var dictmp = engine.GetDiccionarioObjetos();
 
-        engine.ImprimirDiccionario(dictmp);
+        engine.ImprimirDiccionario(dictmp, true);
 
         Printer.driveTitle("Acceso a Diccionario");
         diccionario[0] = "Pekerman";
@@ -66,6 +68,11 @@ class Program
         Console.WriteLine($"Alumno: {ob.UniqueId}");
         Console.WriteLine($"Alumno: {ob.GetType()}");
 
+    }
+
+    private static void AcciondelEvento(object? sender, EventArgs e)
+    {
+        Printer.driveTitle("Saliendo");
     }
 
     private static void ImprimirCursosEscuela(Escuela escuela)
