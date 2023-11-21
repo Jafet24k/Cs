@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using CoreSchool;
+using CoreSchool.App;
 using CoreSchool.Entidades;
 using CoreSchool.Util;
 using static System.Console;
@@ -13,61 +14,66 @@ class Program
         var engine = new EngineSchool();
         engine.Inicializar();
         Printer.driveTitle("BIENVENIDOS _ _ _ ");
+
+        var reporteador = new Reporteador(engine.GetDiccionarioObjetos());
+        reporteador.GetListaEvaluacion();
+
+        #region Notas sobre diccionarios 
         // Printer.beep();
         // Usamos dummy para representar un pareametro de salida que no se usa
         //ImprimirCursosEscuela(engine.Escuela);
 
         //#region Diccionario<>
         // DICCIONARIO<TKey, TValue>
-        Dictionary<int, string> diccionario = new Dictionary<int, string>();
+        // Dictionary<int, string> diccionario = new Dictionary<int, string>();
 
-        diccionario.Add(10, "Jafet");
-        diccionario.Add(23, "Loret");
+        // diccionario.Add(10, "Jafet");
+        // diccionario.Add(23, "Loret");
 
-        foreach (var KeyValPair in diccionario)
-        {
-            Console.WriteLine($"Key: {KeyValPair.Key} Valor: {KeyValPair.Value}");
-        }
+        // foreach (var KeyValPair in diccionario)
+        // {
+        //     Console.WriteLine($"Key: {KeyValPair.Key} Valor: {KeyValPair.Value}");
+        // }
 
-        var dictmp = engine.GetDiccionarioObjetos();
+        // var dictmp = engine.GetDiccionarioObjetos();
 
-        engine.ImprimirDiccionario(dictmp, true);
+        // engine.ImprimirDiccionario(dictmp, true);
 
-        Printer.driveTitle("Acceso a Diccionario");
-        diccionario[0] = "Pekerman";
-        Console.WriteLine(diccionario[23]);
+        // Printer.driveTitle("Acceso a Diccionario");
+        // diccionario[0] = "Pekerman";
+        // Console.WriteLine(diccionario[23]);
 
-        Printer.driveTitle("Otro Diccionario");
-        var dic = new Dictionary<string, string>();
-        dic["luna"] = "Cuerpo celeste que gira alrededor de la tierra";
-        Console.WriteLine(dic["luna"]);
-        // dic.Add("luna", "Protagonist de Soy Luna");
+        // Printer.driveTitle("Otro Diccionario");
+        // var dic = new Dictionary<string, string>();
+        // dic["luna"] = "Cuerpo celeste que gira alrededor de la tierra";
         // Console.WriteLine(dic["luna"]);
+        // // dic.Add("luna", "Protagonist de Soy Luna");
+        // // Console.WriteLine(dic["luna"]);
 
 
 
-        var testDiccionario = engine.GetDiccionarioObjetos();
+        // var testDiccionario = engine.GetDiccionarioObjetos();
 
-        Printer.driveLine(20);
-        Printer.driveLine(20);
-        Printer.driveLine(20);
-        Printer.driveTitle("Pruebas de polimorfismo");
-        var alumnoTest = new Alumno { Nombre = "Cintia Underwood" };
+        // Printer.driveLine(20);
+        // Printer.driveLine(20);
+        // Printer.driveLine(20);
+        // Printer.driveTitle("Pruebas de polimorfismo");
+        // var alumnoTest = new Alumno { Nombre = "Cintia Underwood" };
 
-        // Variable Objeto
-        ObjetoEscuelaBase ob = alumnoTest;
+        // // Variable Objeto
+        // ObjetoEscuelaBase ob = alumnoTest;
 
-        Printer.driveTitle("Alumno");
-        Console.WriteLine($"Alumno: {alumnoTest.Nombre}");
-        Console.WriteLine($"Alumno: {alumnoTest.UniqueId}");
-        Console.WriteLine($"Alumno: {alumnoTest.GetType()}");
+        // Printer.driveTitle("Alumno");
+        // Console.WriteLine($"Alumno: {alumnoTest.Nombre}");
+        // Console.WriteLine($"Alumno: {alumnoTest.UniqueId}");
+        // Console.WriteLine($"Alumno: {alumnoTest.GetType()}");
 
-        // Ejecutamos el mismo codigo pero con la variable objeto
-        Printer.driveTitle("ObjetoEscuela");
-        Console.WriteLine($"Alumno: {ob.Nombre}");
-        Console.WriteLine($"Alumno: {ob.UniqueId}");
-        Console.WriteLine($"Alumno: {ob.GetType()}");
-
+        // // Ejecutamos el mismo codigo pero con la variable objeto
+        // Printer.driveTitle("ObjetoEscuela");
+        // Console.WriteLine($"Alumno: {ob.Nombre}");
+        // Console.WriteLine($"Alumno: {ob.UniqueId}");
+        // Console.WriteLine($"Alumno: {ob.GetType()}");
+        #endregion
     }
 
     private static void AcciondelEvento(object? sender, EventArgs e)
