@@ -17,19 +17,32 @@ namespace CoreSchool.App
             _diccionario = dicObsEsc;
         }
 
-        public IEnumerable<Escuela> GetListaEvaluacion()
+        public IEnumerable<Evaluacion> GetListaEvaluacion()
         {
-            IEnumerable<Escuela> rta;
-            if (_diccionario.TryGetValue(LlaveDiccionario.Escuela, out IEnumerable<ObjetoEscuelaBase> lista))
+            if (_diccionario.TryGetValue(LlaveDiccionario.Evaluacion, out IEnumerable<ObjetoEscuelaBase> lista))
             {
-                rta = lista.Cast<Escuela>();
+                return lista.Cast<Evaluacion>();
             }
             {
-                rta = null;
+                return new List<Evaluacion>();
                 // Escribir en el log de auditoria
             }
-
-            return rta;
         }
+
+        public IEnumerable<string> GetListaAsignaturas()
+        {
+            var listaEvaluaciones = GetListaEvaluacion();
+
+            return (from ev in listaEvaluaciones
+                    select ev.Asignatura.Nombre).Distinct(); ;
+        }
+
+        public Dictionary<string, IEnumerable<Evaluacion>> GetDicEvaluaXAsig()
+        {
+            var dictaRta = new Dictionary<string, IEnumerable<Evaluacion>>();
+
+            return dictaRta;
+        }
+
     }
 }

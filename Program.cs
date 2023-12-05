@@ -16,7 +16,8 @@ class Program
         Printer.driveTitle("BIENVENIDOS _ _ _ ");
 
         var reporteador = new Reporteador(engine.GetDiccionarioObjetos());
-        reporteador.GetListaEvaluacion();
+        var evaList = reporteador.GetListaEvaluacion();
+        var listaAsg = reporteador.GetListaAsignaturas();
 
         #region Notas sobre diccionarios 
         // Printer.beep();
