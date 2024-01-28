@@ -28,10 +28,15 @@ namespace CoreSchool.App
                 // Escribir en el log de auditoria
             }
         }
-
+        // Creamos una sobrecarga del metodo para no siempre pasar un parametro 
         public IEnumerable<string> GetListaAsignaturas()
         {
-            var listaEvaluaciones = GetListaEvaluacion();
+            return GetListaAsignaturas(out var dummy);
+        }
+
+        public IEnumerable<string> GetListaAsignaturas(out IEnumerable<Evaluacion> listaEvaluaciones)
+        {
+            listaEvaluaciones = GetListaEvaluacion();
 
             return (from ev in listaEvaluaciones
                     select ev.Asignatura.Nombre).Distinct(); ;
@@ -40,8 +45,36 @@ namespace CoreSchool.App
         public Dictionary<string, IEnumerable<Evaluacion>> GetDicEvaluaXAsig()
         {
             var dictaRta = new Dictionary<string, IEnumerable<Evaluacion>>();
+            var listaAsig = GetListaAsignaturas(out var listaEval);
 
+            foreach (var asig in listaAsig)
+            {
+                var evalsAsig = from eval in listaEval
+                                where eval.Asignatura.Nombre == asig
+                                select eval;
+                dictaRta.Add(asig, evalsAsig);
+            }
             return dictaRta;
+        }
+
+        public Dictionary<string, IEnumerable<object>> GetPromAlumnxAsignatura()
+        {
+            var rta = new Dictionary<string, IEnumerable<object>>();
+            var dicEvalXAsig = GetDicEvaluaXAsig();
+
+            foreach (var asigConEval in dicEvalXAsig)
+            {
+                var dummy = from eval in asigConEval.Value
+                            group eval by eval.Alumno.UniqueId
+                            into grupoEvalAlumno
+                            select new
+                            {
+                                AlumnoID = grupoEvalAlumno.Key,
+                                promedio = grupoEvalAlumno.Average(evaluacion => evaluacion.Nota)
+                            };
+            }
+
+            return rta;
         }
 
     }

@@ -11,6 +11,13 @@ namespace CoreSchool.Util
             WriteLine("".PadLeft(tam, '='));
         }
         // Nueva Propiedad   
+        public static void presioneEnter()
+        {
+            WriteLine("Presione ENTER para continuar... ");
+        }
+
+
+
         public static void driveTitle(string titulo)
         {
             var tamaño = titulo.Length + 4;

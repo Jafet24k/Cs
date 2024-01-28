@@ -18,6 +18,63 @@ class Program
         var reporteador = new Reporteador(engine.GetDiccionarioObjetos());
         var evaList = reporteador.GetListaEvaluacion();
         var listaAsg = reporteador.GetListaAsignaturas();
+        var listaEvalXAsig = reporteador.GetDicEvaluaXAsig();
+        var listaPromXAsig = reporteador.GetPromAlumnxAsignatura();
+
+        Printer.driveTitle("Captura de una evaluación por consola");
+        var newEval = new Evaluacion();
+        string nombre, notaString;
+        float nota;
+
+
+        WriteLine("Ingrese el nombre de la evaluación");
+        Printer.presioneEnter();
+        nombre = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(nombre))
+        {
+            Printer.driveTitle("El valor del nombre no puede ser NULL ");
+            WriteLine("Saliendo del programa");
+        }
+        else
+        {
+            newEval.Nombre = nombre.ToLower();
+            WriteLine("El nombre de la evaluación ha sido agregado correctamente. ");
+        }
+
+        WriteLine("Ingrese la nota de la evaluación");
+        Printer.presioneEnter();
+        notaString = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(notaString))
+        {
+            Printer.driveTitle("El valor de la nota no puede ser NULL ");
+            WriteLine("Saliendo del programa");
+        }
+        else
+        {
+            try
+            {
+                newEval.Nota = float.Parse(notaString);
+                if (newEval.Nota < 0 || newEval.Nota > 5)
+                {
+                    throw new ArgumentOutOfRangeException("La nota debe ser entre 0 y 5");
+                }
+                WriteLine("La nota de la evalaucion ha sido ingresada correctamente");
+            }
+            catch (ArgumentOutOfRangeException arge)
+            {
+                WriteLine(arge.Message);
+            }
+            catch (System.Exception)
+            {
+                Printer.driveTitle("\nEl valor de la nota no es un numero valido ");
+                WriteLine("Saliendo del programa");
+
+            }
+        }
+
+
 
         #region Notas sobre diccionarios 
         // Printer.beep();
